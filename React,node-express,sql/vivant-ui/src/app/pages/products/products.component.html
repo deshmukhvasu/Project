@@ -1,0 +1,41 @@
+<div class="main-content">
+  <div class="card-content">
+    <mat-card class="example-card" *ngFor="let p of products">
+      <mat-card-header>
+        {{ p.product_name }}
+        <!-- <mat-card-title>{{p.product_name}}</mat-card-title> -->
+      </mat-card-header>
+      <div style="text-align: center">
+        <img class="image-size" [src]="p.image" [alt]="p.product_name" />
+      </div>
+      <mat-card-content>
+        <p>{{ p.description }}</p>
+        <p>RS : {{ p.price }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div style="text-align: center">
+          <button *ngIf="!p.qty" (click)="addCart(p)"  mat-raised-button color="primary">ADD</button>
+          <button
+            *ngIf="p.qty"
+            mat-mini-fab color="primary"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon (click)="actionButton(p, true)">control_point</mat-icon>
+          </button>
+          <span class="count-qty" *ngIf="p.qty"> {{ p.qty }}</span>
+          <button
+            (click)="actionButton(p, false)"
+            *ngIf="p.qty"
+            mat-mini-fab color="primary"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon (click)="actionButton(p, false)"
+              >remove_circle_outline</mat-icon
+            >
+          </button>
+        </div>
+             </mat-card-actions>
+    </mat-card>
+
+  </div>
+</div>
