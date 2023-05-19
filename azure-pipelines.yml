@@ -30,7 +30,7 @@ jobs:
         displayName: Run Angular tests
         inputs:
           script: |
-            ng test --browsers=ChromeHeadless --code-coverage --watch=false
+            npm test
             workingDir: 'React,node-express,sql/vivant-ui'
       - task: PublishTestResults@2
         inputs:
