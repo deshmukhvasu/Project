@@ -48,7 +48,7 @@ jobs:
         inputs:
           script: |
             cd React,node-express,sql
-            mv Dockerfile dist/React,node-express,sql
+            mv Dockerfile React,node-express,sql/dist
       - task: DockerInstaller@0
         inputs:
           dockerVersion: 17.09.0-ce
