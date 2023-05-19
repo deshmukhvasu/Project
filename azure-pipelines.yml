@@ -30,8 +30,9 @@ jobs:
         displayName: Run Angular tests
         inputs:
           script: |
+            cd React,node-express,sql/vivant-ui
             npm test
-            workingDir: 'React,node-express,sql/vivant-ui'
+           # workingDirectory: 'React,node-express,sql/vivant-ui'
       - task: PublishTestResults@2
         inputs:
           testResultsFormat: 'JUnit'
