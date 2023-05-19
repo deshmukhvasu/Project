@@ -32,7 +32,7 @@ jobs:
           script: |
             cd React,node-express,sql/vivant-ui
             npm test
-           # workingDirectory: 'React,node-express,sql/vivant-ui'
+            workingDirectory: 'React,node-express,sql/vivant-ui'
       - task: PublishTestResults@2
         inputs:
           testResultsFormat: 'JUnit'
