@@ -36,5 +36,49 @@ jobs:
      workingDir: 'React,node-express,sql/vivant-ui'
      customCommand: 'run build'
      
- 
+  - task: CmdLine@2
+    displayName: "Run Angular tests"
+    inputs: 
+      script: |
+        ng test --browsers=ChromeHeadless --code-coverage --watch=false
+      workingDir: 'React,node-express,sql/vivant-ui'
+    
+  - task: PublishTestResults@2
+    inputs: 
+      testResultsFormat: 'JUnit'
+      testResultsFiles: 'testresults/junit/unit-test-result.xml'
+      searchFolder: '$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/'
+      mergeTestResults: true
+      testRunTitle: 'Angular Tests'
 
+  - task: CmdLine@2
+    inputs:
+     script: |
+      cd React,node-express,sql
+      mv Dockerfile dist/React,node-express,sql/vivant-ui
+
+  - task: DockerInstaller@0
+    inputs:
+      dockerVersion: '17.09.0-ce'
+      
+    
+  - task: CmdLine@2
+    inputs: 
+     script: |
+      cd React,node-express,sql/vivant-ui/dist/React,node-express,sql
+      docker build -t 
+      docker push
+      docker push
+
+  - task: CmdLine@2
+    inputs:
+      script: |
+       cd React,node-express,sql/vivant-ui/dist/React,node-express,sql
+       docker build -t
+       docker push
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.SourcesDirectory)/React,node-express,sql/dist/'
+      ArtifactName: 'MyArtifact'
+      publishLocation: 'container'
