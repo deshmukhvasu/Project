@@ -17,10 +17,10 @@ steps:
 
 
 - task: Npm@1
-displayName: "INstall Angular"
-inputs:
- commad: "custom"
- customcommand: "install -g @angular/cli"
+  displayName: "INstall Angular"
+  inputs:
+   command: "custom"
+   customcommand: "install -g @angular/cli"
 
 - task: Npm@1
   inputs:
