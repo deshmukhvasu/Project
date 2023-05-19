@@ -36,8 +36,8 @@ jobs:
       - task: PublishTestResults@2
         inputs:
           testResultsFormat: 'JUnit'
-          testResultsFiles: '**/TEST-*.xml'
-          searchFolder: '''$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/'
+          testResultsFiles: '**/coverage/ang-products-*.xml'
+          searchFolder: '''$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/coverage/ang-products'
           
       # - task: PublishTestResults@2
       #   inputs: testResultsFormat: 'JUnit'
