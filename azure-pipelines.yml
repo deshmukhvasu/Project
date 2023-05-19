@@ -36,7 +36,7 @@ jobs:
       - task: PublishTestResults@2
         inputs:
           testResultsFormat: 'JUnit'
-          testResultsFiles: '**/coverage/ang-products-*.xml'
+          testResultsFiles: 'React,node-express,sql/vivant-ui/coverage/ang-products/*.xml'
           searchFolder: '''$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/coverage/ang-products'
           
       # - task: PublishTestResults@2
@@ -47,7 +47,7 @@ jobs:
       - task: CmdLine@2
         inputs:
           script: |
-            cd React,node-express,sql
+            cd React,node-express,sql/
             mv Dockerfile React,node-express,sql/vivant-ui/dist
       - task: DockerInstaller@0
         inputs:
