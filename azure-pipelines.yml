@@ -6,7 +6,7 @@ jobs:
 - job: MyJob
   displayName: My Job
   pool:
-    name: Karan
+    name: self
     demands:
     - some_capability -equals some_value
   steps:
