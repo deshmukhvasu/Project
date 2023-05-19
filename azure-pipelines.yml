@@ -14,32 +14,32 @@ jobs:
     demands:
     - some_capability -equals some_value
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+    displayName: 'Install Node.js'
 
 
-- task: Npm@1
-  displayName: "INstall Angular"
-  inputs:
-   command: "custom"
-   customcommand: "install -g @angular/cli"
+  - task: Npm@1
+    displayName: "INstall Angular"
+    inputs:
+    command: "custom"
+    customcommand: "install -g @angular/cli"
 
-- task: Npm@1
-  inputs:
-   command: 'install'
-   workingDir: 'React,node-express,sql/vivant-ui'
+  - task: Npm@1
+    inputs:
+    command: 'install'
+    workingDir: 'React,node-express,sql/vivant-ui'
 
-- task: CmdLine@2
-  inputs:
-   script: 'npm install karma-junit-reporter --save-dev'
+  - task: CmdLine@2
+    inputs:
+    script: 'npm install karma-junit-reporter --save-dev'
 
-- task: Npm@1
-  inputs:
-   command: 'custom'
-   workingDir: 'React,node-express,sql/vivant-ui'
-   customCommand: 'run build'
+  - task: Npm@1
+    inputs:
+    command: 'custom'
+    workingDir: 'React,node-express,sql/vivant-ui'
+    customCommand: 'run build'
 
 
