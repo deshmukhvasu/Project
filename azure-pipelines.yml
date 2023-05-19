@@ -9,7 +9,6 @@ jobs:
     name: self
     demands:
     - some_capability -equals some_value
-
   steps:
   - task: NodeTool@0
     inputs:
