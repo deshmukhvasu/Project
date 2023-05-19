@@ -48,7 +48,7 @@ jobs:
         inputs:
           script: |
             cd React,node-express,sql
-            mv Dockerfile React,node-express,sql/dist
+            mv Dockerfile React,node-express,sql/vivant-ui/dist
       - task: DockerInstaller@0
         inputs:
           dockerVersion: 17.09.0-ce
@@ -67,6 +67,6 @@ jobs:
             docker push
       - task: PublishBuildArtifacts@1
         inputs:
-          PathtoPublish: $(Build.SourcesDirectory)/React,node-express,sql/dist/
+          PathtoPublish: $(Build.SourcesDirectory)/React,node-express,sql/vivant-ui/dist
           ArtifactName: MyArtifact
           publishLocation: container
