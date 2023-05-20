@@ -47,11 +47,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      ls -l
-      cd dist/
-      ls -l
-      cd ang-products
-      ls -l
       mv Dockerfile dist/ang-products/
     workingDirectory: 'React,node-express,sql/vivant-ui'
 # - task: DockerInstaller@0
