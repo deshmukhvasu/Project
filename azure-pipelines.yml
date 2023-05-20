@@ -64,7 +64,7 @@ steps:
      cd React,node-express,sql/vivant-ui/dist/ang-products
      sudo docker build -t bhanu8808/finalvivant-ui .
      sudo docker login -u bhanu8808 -p Bhanu@1432
-     sudo docker push bhanu88081/finalvivant-ui
+     sudo docker push bhanu8808/finalvivant-ui
 - task: CmdLine@2
   inputs:
     script: |
