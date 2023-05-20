@@ -55,22 +55,22 @@ steps:
     ArtifactName: 'MyArtifact'
     publishLocation: 'Container'
 
-# - task: DockerInstaller@0
-#   inputs:
-# #     dockerVersion: '17.09.0-ce'
-# - task: CmdLine@2
-#   inputs:
-#     script: |
-#       cd MongoDBAngular13/dist/mongo-dbangular13
-#       sudo docker build -t chandu2311/finalpocmongoangular .
-#       sudo docker login -u chandu2311 -p Nayaknayak23
-#       sudo docker push chandu2311/finalpocmongoangular
-# - task: CmdLine@2
-#   inputs:
-#     script: |
-#       cd MongoDBAngular13/dist/mongo-dbangular13
-#       sudo docker build -t chandu2311/finalpocbackend .
-#       sudo docker push chandu2311/finalpocbackend
-#- task: CmdLine@2
-#  inputs:
-#    script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
+- task: DockerInstaller@0
+  inputs:
+    dockerVersion: '17.09.0-ce'
+- task: CmdLine@2
+  inputs:
+   script: |
+     cd React,node-express,sql/vivant-ui/dist/ang-products
+     sudo docker build -t bhanu8808/finalvivant .
+     sudo docker login -u bhanu8808 -p Bhanu@1432
+     sudo docker push bhanu88081/finalvivant
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd React,node-express,sql/vivant-backend/
+      sudo docker build -t chandu2311/finalpocbackend .
+      sudo docker push chandu2311/finalpocbackend
+- task: CmdLine@2
+  inputs:
+   script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
