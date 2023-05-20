@@ -40,7 +40,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: 'testresults/junit/unit-test-result.xml'
+    testResultsFiles: 'coverage/ang-products/unit-test-result.xml'
     searchFolder: '$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/coverage/ang-products/'
 
   
@@ -49,6 +49,12 @@ steps:
     script: |
       mv Dockerfile dist/ang-products/
     workingDirectory: 'React,node-express,sql/vivant-ui'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)/React,node-express,sql/vivant-ui/dist/'
+    ArtifactName: 'MyArtifact'
+    publishLocation: 'Container'
+
 # - task: DockerInstaller@0
 #   inputs:
 # #     dockerVersion: '17.09.0-ce'
@@ -68,8 +74,3 @@ steps:
 #- task: CmdLine@2
 #  inputs:
 #    script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
-#- task: PublishBuildArtifacts@1
-#  inputs:
-#    PathtoPublish: '$(Build.SourcesDirectory)/MongoDBAngular13/dist/'
-#    ArtifactName: 'MyArtifact'
- #   publishLocation: 'Container'
