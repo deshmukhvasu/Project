@@ -71,6 +71,6 @@ steps:
       cd React,node-express,sql/vivant-backend/
       sudo docker build -t bhanu8808/finalvivanth-backend .
       sudo docker push bhanu8808/finalvivanth-backend
-- task: CmdLine@2
-  inputs:
-   script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
+#- task: CmdLine@2
+#  inputs:
+#   script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
