@@ -48,6 +48,10 @@ steps:
   inputs:
     script: |
       ls -l
+      cd dist/
+      ls -l
+      cd ang-products
+      ls -l
     workingDirectory: 'React,node-express,sql/vivant-ui'
 # - task: DockerInstaller@0
 #   inputs:
