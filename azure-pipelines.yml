@@ -1,7 +1,7 @@
 trigger: none
 
 pool:
-  name: self-hosted
+  name: self
   
 
 steps:
