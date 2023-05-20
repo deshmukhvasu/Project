@@ -1,72 +1,75 @@
----
-jobs:
-  - job: MyJob
-    displayName: My Job
-    pool:
-      name: self
-    steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: 16.x
-        displayName: Install Node.js
-      - task: Npm@1
-        displayName: Install Angular
-        inputs:
-          command: custom
-          customcommand: install -g @angular/cli
-      - task: Npm@1
-        inputs:
-          command: install
-          workingDir: React,node-express,sql/vivant-ui
-      - task: CmdLine@2
-        inputs:
-          script: npm install karma-junit-reporter --save-dev
-      - task: Npm@1
-        inputs:
-          command: custom
-          workingDir: React,node-express,sql/vivant-ui
-          customCommand: run build
-      - task: CmdLine@2
-        displayName: Run Angular tests
-        inputs:
-          script: |
-            cd React,node-express,sql/vivant-ui
-            npm test
-            #workingDirectory: 'React,node-express,sql/vivant-ui'
-      - task: PublishTestResults@2
-        inputs:
-          testResultsFormat: 'JUnit'
-          testResultsFiles: 'React,node-express,sql/vivant-ui/coverage/ang-products/*.xml'
-          searchFolder: '''$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/coverage/ang-products'
-          
-      # - task: PublishTestResults@2
-      #   inputs: testResultsFormat: 'JUnit'
-      #     testResultsFiles: 'testresults/junit/unit-test-result.xml'
-      #     searchFolder: '$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/'
-      #     mergeTestResults: true testRunTitle: 'Angular Tests'
-      - task: CmdLine@2
-        inputs:
-          script: |
-            cd React,node-express,sql/
-            mv Dockerfile React,node-express,sql/vivant-ui/dist
-      - task: DockerInstaller@0
-        inputs:
-          dockerVersion: 17.09.0-ce
-      - task: CmdLine@2
-        inputs:
-          script: |
-            cd React,node-express,sql/vivant-ui/dist/React,node-express,sql
-            docker build -t 
-            docker push
-            docker push
-      - task: CmdLine@2
-        inputs:
-          script: |
-            cd React,node-express,sql/vivant-ui/dist/React,node-express,sql
-            docker build -t
-            docker push
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: $(Build.SourcesDirectory)/React,node-express,sql/vivant-ui/dist
-          ArtifactName: MyArtifact
-          publishLocation: container
+trigger: none
+
+pool:
+  name: self-hosted
+  
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Install Node.js'
+
+- task: Npm@1
+  displayName: "Install Angular cli"
+  inputs:
+    command: "custom"
+    customCommand: "install -g @angular/cli"
+  
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'React,node-express,sql/vivant-ui'
+
+- task: CmdLine@2
+  inputs:
+    script: 'npm install karma-junit-reporter --save-dev'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'React,node-express,sql/vivant-ui'
+    customCommand: 'run build'
+    
+- task: CmdLine@2
+  displayName: "Run Angular tests"
+  inputs:
+    script: |
+      ng test --browsers=ChromeHeadless --code-coverage --watch=false
+    workingDirectory: 'React,node-express,sql/vivant-ui'
+  
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'testresults/junit/unit-test-result.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/React,node-express,sql/vivant-ui/coverage/ang-products/'
+
+  
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd React,node-express,sql
+      mv Dockerfile dist/React,node-express,sql
+# - task: DockerInstaller@0
+#   inputs:
+# #     dockerVersion: '17.09.0-ce'
+# - task: CmdLine@2
+#   inputs:
+#     script: |
+#       cd MongoDBAngular13/dist/mongo-dbangular13
+#       sudo docker build -t chandu2311/finalpocmongoangular .
+#       sudo docker login -u chandu2311 -p Nayaknayak23
+#       sudo docker push chandu2311/finalpocmongoangular
+# - task: CmdLine@2
+#   inputs:
+#     script: |
+#       cd MongoDBAngular13/dist/mongo-dbangular13
+#       sudo docker build -t chandu2311/finalpocbackend .
+#       sudo docker push chandu2311/finalpocbackend
+#- task: CmdLine@2
+#  inputs:
+#    script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    PathtoPublish: '$(Build.SourcesDirectory)/MongoDBAngular13/dist/'
+#    ArtifactName: 'MyArtifact'
+ #   publishLocation: 'Container'
