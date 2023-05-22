@@ -6,7 +6,7 @@ variable "location" {
 
 variable "resource_group_name" {
     type = string
-    default = "hms-demo"
+    default = "vivanth-poc"
   
 }
 variable "environment" {
