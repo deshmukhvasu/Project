@@ -1,8 +1,16 @@
-variable "resource_group" {
-  default = "Final-POC"
+variable "location" {
+    type = string
+    default = "East US"
+  
 }
 
+variable "resource_group_name" {
+    type = string
+    default = "hms-demo"
+  
+}
+variable "environment" {
+    type = string
+    default = "Dev"
 
-variable "location" {
-  default = "East US"
 }
