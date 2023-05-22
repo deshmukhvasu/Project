@@ -62,15 +62,15 @@ steps:
   inputs:
    script: |
      cd React,node-express,sql/vivant-ui/dist/ang-products
-     sudo docker build -t deshmukhvasu/Project-ui .
+     sudo docker build -t deshmukhvasu/project-ui .
      sudo docker login -u deshmukhvasu -p 9977450459vd
-     sudo docker push deshmukhvasu/Project-ui
+     sudo docker push deshmukhvasu/project-ui
 - task: CmdLine@2
   inputs:
     script: |
       cd React,node-express,sql/vivant-backend/
-      sudo docker build -t deshmukhvasu/Project-backend .
-      sudo docker push deshmukhvasu/Project-backend
+      sudo docker build -t deshmukhvasu/project-backend .
+      sudo docker push deshmukhvasu/project-backend
 #- task: CmdLine@2
 #  inputs:
 #   script: 'mv terraform MongoDBAngular13/dist/mongo-dbangular13'
