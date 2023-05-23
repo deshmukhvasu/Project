@@ -6,7 +6,7 @@ variable "location" {
 
 variable "resource_group_name" {
     type = string
-    default = "vivanth-poc"
+    default = "ForVM"
   
 }
 variable "environment" {
