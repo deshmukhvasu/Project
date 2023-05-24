@@ -148,6 +148,7 @@
      ignore_errors: true
      command: sh /tmp/kubernetes_join_command
      register: joined_or_not
+     
    - name: Mark tasks as successful
      meta: clear_host_errors 
      changed_when: false
